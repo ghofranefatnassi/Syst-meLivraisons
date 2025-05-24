@@ -1,0 +1,12 @@
+<div *ngIf="Paiment" class="Paiment-details">
+  <h3>Payment Details</h3>
+  <p><strong>Order ID:</strong> {{ Paiment.commande.id }}</p>
+  <p><strong>Amount:</strong> {{ Paiment.montant | currency }}</p>
+  <p><strong>Method:</strong> {{ Paiment.methode }}</p>
+  <p><strong>Status:</strong> {{ Paiment.statut }}</p>
+  <p><strong>Date:</strong> {{ Paiment.datePaiment | date:'medium' }}</p>
+  
+  <div *ngIf="Paiment.statut === 'PAYE'">
+    <button (click)="processRefund()">Process Refund</button>
+  </div>
+</div>

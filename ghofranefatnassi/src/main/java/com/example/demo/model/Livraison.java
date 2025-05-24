@@ -9,9 +9,8 @@ import java.math.BigDecimal;
 public class Livraison {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idLi")
+    @Column(name = "idLi") // Matches DB column name
     private Integer id;
-    
     @OneToOne
     @JoinColumn(name = "commande", nullable = false)
     private Commande commande;

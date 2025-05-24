@@ -1,0 +1,96 @@
+/* Payment Section Styles */
+.payment-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.payment-details p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.payment-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.btn-view {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-refund {
+  background-color: #FF9800;
+  color: white;
+  border: none;
+}
+
+.btn-add-payment {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  margin-top: 1rem;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.status-update {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Status Badges */
+.status-en_attente {
+  color: #FFC107;
+  font-weight: bold;
+}
+
+.status-paye {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.status-echec {
+  color: #F44336;
+  font-weight: bold;
+}
+
+.status-rembourse {
+  color: #9E9E9E;
+  font-weight: bold;
+}
+
+/* Payment Form Container */
+.payment-form-container {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

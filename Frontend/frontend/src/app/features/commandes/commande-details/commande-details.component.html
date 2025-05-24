@@ -1,0 +1,56 @@
+<div *ngIf="isLoading" class="loading">Loading...</div>
+
+<div *ngIf="commande && !isLoading" class="commande-details">
+  <!-- Order Information Section (unchanged) -->
+  
+  <!-- Payment Section -->
+  <div class="section payment-section">
+    <h3>Payment Information</h3>
+    
+    <div *ngIf="paiment; else noPayment">
+      <div class="payment-details">
+        <p><strong>Amount:</strong> {{ paiment.montant | currency }}</p>
+        <p><strong>Method:</strong> {{ paiment.methode }}</p>
+        <p><strong>Status:</strong> 
+          <span [class]="'status-' + paiment.statut.toLowerCase()">
+            {{ paiment.statut }}
+          </span>
+        </p>
+        <p><strong>Date:</strong> {{ paiment.datePaiment | date:'medium' }}</p>
+      </div>
+
+      <div class="payment-actions">
+        <a [routerLink]="['/paiments', paiment.id]" class="btn btn-view">
+          View Payment Details
+        </a>
+
+        <button *ngIf="paiment.statut === 'PAYE'"
+                (click)="processRefund()" 
+                class="btn btn-refund">
+          Process Refund
+        </button>
+
+        <!-- Status dropdown (unchanged) -->
+      </div>
+    </div>
+    
+    <ng-template #noPayment>
+      <div class="no-payment">
+        <p>No payment recorded for this order</p>
+        <button (click)="showPaymentForm = true" class="btn btn-add-payment">
+          Add Payment
+        </button>
+        
+        <div *ngIf="showPaymentForm" class="payment-form-container">
+          <app-paiment-form 
+            [commandeId]="commande.id"
+            (submitPaiment)="onPaymentSubmit($event)"
+            (cancel)="showPaymentForm = false">
+          </app-paiment-form>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Delivery Section (unchanged) -->
+</div>

@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Products</h2>
+    <a routerLink="/produits/new" class="btn btn-primary">
+      Add Product
+    </a>
+  </div>
+
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <table *ngIf="!isLoading" class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Stock</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of produits">
+        <td>{{ p.id }}</td>
+        <td>{{ p.nom }}</td>
+        <td>{{ p.stock }}</td>
+        <td>{{ p.prix | currency }}</td>
+        <td>
+          <a [routerLink]="['/produits', p.id]" class="btn btn-info btn-sm">View</a>
+          <a [routerLink]="['/produits', p.id, 'edit']" class="btn btn-warning btn-sm mx-2">Edit</a>
+          <button (click)="deleteProduit(p.id!)" class="btn btn-danger btn-sm">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label>Amount:</label>
+    <input type="number" [(ngModel)]="payment.montant" name="montant" required min="0" step="0.01">
+  </div>
+  
+  <div>
+    <label>Payment Method:</label>
+    <select [(ngModel)]="payment.methode" name="methode" required>
+      <option *ngFor="let method of paymentMethods" [value]="method">{{ method }}</option>
+    </select>
+  </div>
+  
+  <button type="submit">Submit Payment</button>
+</form>

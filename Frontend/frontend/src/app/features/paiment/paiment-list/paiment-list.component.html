@@ -1,0 +1,42 @@
+<div class="Paiment-list">
+  <h2>Payment List</h2>
+  
+  <div *ngIf="isLoading" class="loading">Loading payments...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!isLoading && !error">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Order ID</th>
+        <th>Amount</th>
+        <th>Method</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Paiment of Paiments">
+        <td>{{ Paiment.id }}</td>
+        <td>
+          <a [routerLink]="['/commandes', Paiment.commande.id]">
+            {{ Paiment.commande.id }}
+          </a>
+        </td>
+        <td>{{ Paiment.montant | currency }}</td>
+        <td>{{ Paiment.methode }}</td>
+        <td>{{ Paiment.statut }}</td>
+        <td>{{ Paiment.datePaiment | date:'medium' }}</td>
+        <td class="actions">
+          <a [routerLink]="['/Paiments', Paiment.id]" class="btn-view">View</a>
+          <button (click)="deletePaiment(Paiment.id)" class="btn-delete">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="actions">
+    <a routerLink="/Paiments/new" class="btn-add">Add New Payment</a>
+  </div>
+</div>

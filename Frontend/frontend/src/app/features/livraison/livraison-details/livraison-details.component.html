@@ -1,0 +1,25 @@
+<div *ngIf="!isLoading; else loading">
+  <div *ngIf="livraison" class="livraison-details">
+    <h3>Delivery Details</h3>
+    <p><strong>Order ID:</strong> {{ livraison.commande.id }}</p>
+    <p><strong>Status:</strong> {{ livraison.statut }}</p>
+    <p><strong>Scheduled Date:</strong> {{ livraison.dateLivraisonPrevue | date:'medium' }}</p>
+    <p *ngIf="livraison.dateLivraisonReelle">
+      <strong>Actual Delivery Date:</strong> {{ livraison.dateLivraisonReelle | date:'medium' }}
+    </p>
+    <p *ngIf="livraison.transporteur">
+      <strong>Carrier:</strong> {{ livraison.transporteur }}
+    </p>
+  </div>
+  <div *ngIf="!livraison && !isLoading">
+    <p>No delivery information available</p>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-template>

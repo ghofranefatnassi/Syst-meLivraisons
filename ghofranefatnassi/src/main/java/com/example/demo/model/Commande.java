@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 public class Commande {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCom")
+    @Column(name = "idCom") // Matches DB column name
     private Integer id;
     
     @ManyToOne(fetch = FetchType.LAZY)

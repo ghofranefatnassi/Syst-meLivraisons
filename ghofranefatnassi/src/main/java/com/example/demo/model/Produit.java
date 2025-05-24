@@ -10,8 +10,9 @@ import java.util.List;
 public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idPr")
+    @Column(name = "idPr") // Matches DB column name
     private Integer id;
+    
     
     @Column(name = "nomPro", nullable = false, length = 50)
     private String nom;
