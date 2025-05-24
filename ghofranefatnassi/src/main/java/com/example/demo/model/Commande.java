@@ -10,7 +10,7 @@ import java.util.List;
 public class Commande {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCom") // Matches DB column name
+    @Column(name = "idCom") 
     private Integer id;
     
     @ManyToOne(fetch = FetchType.LAZY)
