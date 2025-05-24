@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./ghofranefatnassi
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - DB_URL=jdbc:mysql://host.docker.internal:3306/livraisons
+      - DB_USERNAME=your_xampp_mysql_user
+      - DB_PASSWORD=your_xampp_mysql_password
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway" 
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
